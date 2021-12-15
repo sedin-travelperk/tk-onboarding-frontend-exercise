@@ -3,13 +3,13 @@ import React from "react";
 import RecipeListItem from "./RecipeListItem";
 import Divider from "../../app/components/Divider";
 
-const RecipeList = ({recipes}) => {
+const RecipeList = ({recipeList}) => {
     return (
         <>
             <h1>Recipe List</h1>
             <Divider />
             {
-                recipes.map(recipe => (
+                recipeList.map(recipe => (
                     <>
                         <RecipeListItem recipe={recipe}/>
                         <Divider />
