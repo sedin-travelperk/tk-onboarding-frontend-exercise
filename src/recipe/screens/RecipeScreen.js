@@ -1,33 +1,18 @@
 import React from "react";
-import RecipeList from "../components/RecipeList";
-import useRecipeListState from "../hooks/useRecipeListState";
+import { useParams } from 'react-router-dom';
 
-let recipes = [
-    {
-        "id": 1,
-        "name": "Pizza",
-        "description": "Put it in the oven",
-        "ingredients": [{"name": "dough"}, {"name": "cheese"}, {"name": "tomato"}]
-    },
-    {
-        "id": 2,
-        "name": "Hamburger",
-        "description": "Put it in the grill",
-        "ingredients": [{"name": "ground beef"}, {"name": "buns"}, {"name": "tomato"}]
-    }
-]
+const recipe = {
+    "id": 1,
+    "name": "Pizza",
+    "description": "Put it in the oven",
+    "ingredients": [{"name": "dough"}, {"name": "cheese"}, {"name": "tomato"}]
+}
 
 const RecipeScreen = () => {
-    const {recipeList, addRecipe, removeRecipe} = useRecipeListState(recipes)
+    const params = useParams()
 
     return (
-        <>
-            <RecipeList
-                recipeList={recipeList}
-                addRecipe={addRecipe}
-                removeRecipe={removeRecipe}
-            />
-        </>
+        <h1>Recipe {params.recipeId}</h1>
     )
 }
 
