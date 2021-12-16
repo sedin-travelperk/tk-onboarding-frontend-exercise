@@ -16,10 +16,6 @@ const AddRecipeModal = ({addRecipe}) => {
         setShowModal()
     }
 
-    const handleResetChange = () => {
-        resetState()
-    }
-
     useEffect(() => {
        setValidRecipe(isValid())
     }, [recipe]);
