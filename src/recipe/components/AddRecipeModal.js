@@ -7,7 +7,7 @@ import useFlagState from "../../app/hooks/useFlagState";
 
 const AddRecipeModal = ({addRecipe}) => {
     const [showModal, setShowModal] = useFlagState(false);
-    const [recipe, updateRecipeField, resetState, isValid] = useRecipeState({});
+    const {recipe, updateRecipeField, resetState, isValid} = useRecipeState({});
     const [validRecipe, setValidRecipe] = useFlagState(false);
 
     const handleSaveRecipe = () => {
