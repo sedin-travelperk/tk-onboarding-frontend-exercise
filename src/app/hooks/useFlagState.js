@@ -2,8 +2,8 @@ import {useState} from "react";
 
 const useFlagState = (initialVal) => {
     const [state, setState] = useState(initialVal || false);
-    const changeFlag = () => {
-        setState(!state)
+    const changeFlag = (value) => {
+        setState(value)
     }
 
     return [state, changeFlag]

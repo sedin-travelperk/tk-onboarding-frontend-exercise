@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const useRecipeState = (initialVal) => {
+const useRecipeListState = (initialVal) => {
     const [recipeList, setRecipeList] = useState(initialVal || [])
 
     const addRecipe = (recipe) => {
@@ -19,4 +19,4 @@ const useRecipeState = (initialVal) => {
     }
 }
 
-export default useRecipeState
+export default useRecipeListState

@@ -1,29 +1,25 @@
-import React, {useState} from "react";
+import React from "react";
 
 import RecipeListItem from "./RecipeListItem";
 import Divider from "../../app/components/Divider";
-import Button from "../../app/components/Button";
-import Modal from "../../app/components/Modal";
-import useFlagState from "../../app/hooks/useFlagState";
+import AddRecipeModal from "./AddRecipeModal";
 
-const RecipeList = ({recipeList}) => {
-    const [showModal, setShowModal] = useFlagState();
+const RecipeList = ({recipeList, addRecipe, removeRecipe}) => {
 
     return (
         <>
             <h1>Recipe List</h1>
-            <Button onClick={setShowModal}>Add recipe</Button>
-            <Modal showModal={showModal} setShowModal={setShowModal} >
-                <p>Add recipe form</p>
-            </Modal>
+            <AddRecipeModal addRecipe={addRecipe}/>
             <Divider />
             {
                 recipeList.map(recipe => (
-                    <>
-                        <RecipeListItem recipe={recipe}/>
+                    <div key={recipe.id}>
+                        <RecipeListItem
+                            recipe={recipe}
+                            removeRecipe={removeRecipe}
+                        />
                         <Divider />
-                    </>
-
+                    </div>
                     )
                 )
             }

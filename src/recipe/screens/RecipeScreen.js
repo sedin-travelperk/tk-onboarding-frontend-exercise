@@ -1,6 +1,6 @@
 import React from "react";
 import RecipeList from "../components/RecipeList";
-import useRecipeState from "../hooks/useRecipeState";
+import useRecipeListState from "../hooks/useRecipeListState";
 
 let recipes = [
     {
@@ -18,11 +18,15 @@ let recipes = [
 ]
 
 const RecipeScreen = () => {
-    const {recipeList, addRecipe, removeRecipe} = useRecipeState(recipes)
+    const {recipeList, addRecipe, removeRecipe} = useRecipeListState(recipes)
 
     return (
         <>
-            <RecipeList recipeList={recipeList}/>
+            <RecipeList
+                recipeList={recipeList}
+                addRecipe={addRecipe}
+                removeRecipe={removeRecipe}
+            />
         </>
     )
 }
