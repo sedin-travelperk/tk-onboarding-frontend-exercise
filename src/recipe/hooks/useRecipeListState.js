@@ -3,6 +3,10 @@ import {useState} from "react";
 const useRecipeListState = (initialVal) => {
     const [recipeList, setRecipeList] = useState(initialVal || [])
 
+    const updateRecipeList = (value) => {
+        setRecipeList(value)
+    }
+
     const addRecipe = (recipe) => {
         setRecipeList([...recipeList, recipe]);
     }
@@ -14,6 +18,7 @@ const useRecipeListState = (initialVal) => {
 
     return {
         recipeList,
+        updateRecipeList,
         addRecipe,
         removeRecipe
     }

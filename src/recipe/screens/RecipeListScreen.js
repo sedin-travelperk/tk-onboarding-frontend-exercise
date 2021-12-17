@@ -1,24 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import RecipeList from "../components/RecipeList";
 import useRecipeListState from "../hooks/useRecipeListState";
-
-let recipes = [
-    {
-        "id": 1,
-        "name": "Pizza",
-        "description": "Put it in the oven",
-        "ingredients": [{"name": "dough"}, {"name": "cheese"}, {"name": "tomato"}]
-    },
-    {
-        "id": 2,
-        "name": "Hamburger",
-        "description": "Put it in the grill",
-        "ingredients": [{"name": "ground beef"}, {"name": "buns"}, {"name": "tomato"}]
-    }
-]
+import RecipeService from "../services/RecipeService";
 
 const RecipeListScreen = () => {
-    const {recipeList, addRecipe, removeRecipe} = useRecipeListState(recipes)
+    const recipe_service = RecipeService()
+    const {recipeList, updateRecipeList, addRecipe, removeRecipe} = useRecipeListState([])
+
+    useEffect(async () => {
+        const result = await recipe_service.find_all_recipes()
+
+        updateRecipeList(result);
+    }, []);
+
 
     return (
         <>
