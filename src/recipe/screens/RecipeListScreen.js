@@ -4,11 +4,11 @@ import useRecipeListState from "../hooks/useRecipeListState";
 import RecipeService from "../services/RecipeService";
 
 const RecipeListScreen = () => {
-    const recipe_service = RecipeService()
+    const recipeService = RecipeService()
     const {recipeList, updateRecipeList, addRecipe, removeRecipe} = useRecipeListState([])
 
     useEffect(async () => {
-        const result = await recipe_service.find_all_recipes()
+        const result = await recipeService.find_all_recipes()
 
         updateRecipeList(result);
     }, []);

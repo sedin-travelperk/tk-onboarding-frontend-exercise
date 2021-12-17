@@ -5,19 +5,26 @@ import useFlagState from "../../app/hooks/useFlagState";
 import RecipeForm from "../components/RecipeForm";
 import Button from "../../app/components/Button";
 import {useNavigate} from "react-router";
+import RecipeService from "../services/RecipeService";
 
-const test_recipe = {
-    "id": 1,
-    "name": "Pizza",
-    "description": "Put it in the oven",
-    "ingredients": [{"name": "dough"}, {"name": "cheese"}, {"name": "tomato"}]
-}
 
 const RecipeScreen = () => {
+    const recipeService = RecipeService()
     const navigate = useNavigate();
     const params = useParams()
     const {recipe, updateRecipe, updateRecipeField, isValid} = useRecipeState({});
     const [validRecipe, setValidRecipe] = useFlagState(false);
+
+    useEffect(async () => {
+        console.log(params.recipeId)
+        const result = await recipeService.get_recipe(params.recipeId)
+
+        updateRecipe(result)
+    }, []);
+
+    useEffect(() => {
+        setValidRecipe(isValid())
+    }, [recipe]);
 
     const handleSaveRecipe = () => {
         navigate(`/recipes`);
@@ -26,15 +33,6 @@ const RecipeScreen = () => {
     const handleDeleteRecipe = () => {
         navigate(`/recipes`);
     }
-
-    useEffect(() => {
-        console.log(params.recipeId)
-        updateRecipe(test_recipe)
-    }, []);
-
-    useEffect(() => {
-        setValidRecipe(isValid())
-    }, [recipe]);
 
     return (
         <>
