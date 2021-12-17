@@ -13,12 +13,18 @@ const RecipeListScreen = () => {
         updateRecipeList(result);
     }, []);
 
+    const handleAddRecipe = async (recipe) => {
+        const result = await recipeService.create_recipe(recipe);
+
+        addRecipe(result);
+    }
+
 
     return (
         <>
             <RecipeList
                 recipeList={recipeList}
-                addRecipe={addRecipe}
+                addRecipe={handleAddRecipe}
                 removeRecipe={removeRecipe}
             />
         </>
