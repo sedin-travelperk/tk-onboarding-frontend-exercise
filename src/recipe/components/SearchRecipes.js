@@ -27,6 +27,7 @@ const SearchRecipes = ({updateRecipeList}) => {
     return (
         <>
             <Input
+                label={"Enter recipe name: "}
                 value={name}
                 onChange={handleChange}
             />

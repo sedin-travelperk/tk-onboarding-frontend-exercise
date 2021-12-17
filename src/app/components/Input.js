@@ -1,15 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-const InputField = styled.input``;
-const InputLabel = styled.label``;
+const Container = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-items: center;
+`;
 
 const Input = ({label, value, onChange}) => {
     return (
-        <div>
-            <InputLabel>{label}</InputLabel>
-            <InputField defaultValue={value} onChange={onChange}/>
-        </div>
+        <Container>
+            <label>{label}</label>
+            <input defaultValue={value} onChange={onChange}/>
+        </Container>
     )
 }
 
