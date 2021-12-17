@@ -28,6 +28,14 @@ function RecipeService() {
         async removeRecipe(recipeId) {
             const recipeUrl = `${RECIPE_URL}${recipeId}`;
             await _httpService.delete(recipeUrl);
+        },
+
+        async updateRecipe(recipe) {
+            const recipeUrl = `${RECIPE_URL}${recipe.id}`;
+            const response = await _httpService.patch(recipeUrl, recipe);
+
+            return response;
+
         }
 
     };

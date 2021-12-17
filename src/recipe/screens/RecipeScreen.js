@@ -16,7 +16,6 @@ const RecipeScreen = () => {
     const [validRecipe, setValidRecipe] = useFlagState(false);
 
     useEffect(async () => {
-        console.log(params.recipeId)
         const result = await recipeService.getRecipe(params.recipeId)
 
         updateRecipe(result)
@@ -26,11 +25,13 @@ const RecipeScreen = () => {
         setValidRecipe(isValid())
     }, [recipe]);
 
-    const handleSaveRecipe = () => {
+    const handleSaveRecipe = async () => {
+        await recipeService.updateRecipe(recipe);
         navigate(`/recipes`);
     }
 
-    const handleDeleteRecipe = () => {
+    const handleDeleteRecipe = async () => {
+        await recipeService.removeRecipe(recipe.id)
         navigate(`/recipes`);
     }
 
