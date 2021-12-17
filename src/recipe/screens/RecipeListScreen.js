@@ -8,15 +8,20 @@ const RecipeListScreen = () => {
     const {recipeList, updateRecipeList, addRecipe, removeRecipe} = useRecipeListState([])
 
     useEffect(async () => {
-        const result = await recipeService.find_all_recipes()
+        const result = await recipeService.findAllRecipes()
 
         updateRecipeList(result);
     }, []);
 
     const handleAddRecipe = async (recipe) => {
-        const result = await recipeService.create_recipe(recipe);
+        const result = await recipeService.createRecipe(recipe);
 
         addRecipe(result);
+    }
+
+    const handleRemoveRecipe = async (recipeId) => {
+        await recipeService.removeRecipe(recipeId);
+        removeRecipe(recipeId);
     }
 
 
@@ -25,7 +30,7 @@ const RecipeListScreen = () => {
             <RecipeList
                 recipeList={recipeList}
                 addRecipe={handleAddRecipe}
-                removeRecipe={removeRecipe}
+                removeRecipe={handleRemoveRecipe}
             />
         </>
     )

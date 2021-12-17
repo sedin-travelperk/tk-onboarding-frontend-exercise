@@ -17,7 +17,7 @@ const RecipeScreen = () => {
 
     useEffect(async () => {
         console.log(params.recipeId)
-        const result = await recipeService.get_recipe(params.recipeId)
+        const result = await recipeService.getRecipe(params.recipeId)
 
         updateRecipe(result)
     }, []);

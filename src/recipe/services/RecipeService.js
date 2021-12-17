@@ -6,23 +6,28 @@ function RecipeService() {
     const _httpService = HttpService();
 
     return {
-        async find_all_recipes() {
+        async findAllRecipes() {
             const response = await _httpService.get(RECIPE_URL)
 
             return response
         },
 
-        async get_recipe(recipeId) {
+        async getRecipe(recipeId) {
             const recipeUrl = `${RECIPE_URL}${recipeId}`;
             const response = await _httpService.get(recipeUrl);
 
             return response
         },
 
-        async create_recipe(recipe) {
+        async createRecipe(recipe) {
             const response = await _httpService.post(RECIPE_URL, recipe);
 
             return response
+        },
+
+        async removeRecipe(recipeId) {
+            const recipeUrl = `${RECIPE_URL}${recipeId}`;
+            await _httpService.delete(recipeUrl);
         }
 
     };

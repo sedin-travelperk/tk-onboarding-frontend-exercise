@@ -12,6 +12,7 @@ const RecipeListItem = ({recipe, removeRecipe}) => {
 
     return (
         <>
+            <p>{recipe.id}</p>
             <p>{recipe.name}</p>
             <p>{recipe.description}</p>
             <Button onClick={() => openRecipeDetails()}>Edit</Button>
