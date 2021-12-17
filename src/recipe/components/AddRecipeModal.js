@@ -4,16 +4,18 @@ import Modal from "../../app/components/Modal";
 import RecipeForm from "./RecipeForm";
 import useRecipeState from "../hooks/useRecipeState";
 import useFlagState from "../../app/hooks/useFlagState";
+import IngredientForm from "./IngredientForm";
+import IngredientList from "./IngredientList";
 
 const AddRecipeModal = ({addRecipe}) => {
     const [showModal, setShowModal] = useFlagState(false);
-    const {recipe, updateRecipeField, resetState, isValid} = useRecipeState({});
+    const {recipe, updateRecipeField, resetState, isValid, addIngredient, removeIngredient} = useRecipeState({});
     const [validRecipe, setValidRecipe] = useFlagState(false);
 
     const handleSaveRecipe = () => {
         addRecipe(recipe)
         resetState()
-        setShowModal()
+        setShowModal(false)
     }
 
     useEffect(() => {
@@ -28,6 +30,8 @@ const AddRecipeModal = ({addRecipe}) => {
                     recipe={recipe}
                     updateRecipeField={updateRecipeField}
                 />
+                <IngredientForm addIngredient={addIngredient}/>
+                <IngredientList ingredients={recipe.ingredients || []} removeIngredient={removeIngredient}/>
 
                 <Button onClick={handleSaveRecipe} disabled={validRecipe}>Save</Button>
             </Modal>

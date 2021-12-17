@@ -4,7 +4,7 @@ import Input from "../../app/components/Input";
 const RecipeForm = ({recipe, updateRecipeField}) => {
 
     return (
-        <form>
+        <>
             <Input
                 label={"Name"}
                 value={recipe.name}
@@ -15,7 +15,7 @@ const RecipeForm = ({recipe, updateRecipeField}) => {
                 value={recipe.description}
                 onChange={event => updateRecipeField(event.target.value, "description")}
             />
-        </form>
+        </>
     )
 }
 
