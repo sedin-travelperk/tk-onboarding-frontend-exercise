@@ -12,6 +12,12 @@ function RecipeService() {
             return response
         },
 
+        async findAllRecipesByName(name) {
+            const response = await _httpService.get(RECIPE_URL, {"name": name});
+
+            return response;
+        },
+
         async getRecipe(recipeId) {
             const recipeUrl = `${RECIPE_URL}${recipeId}`;
             const response = await _httpService.get(recipeUrl);
