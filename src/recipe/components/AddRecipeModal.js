@@ -30,9 +30,11 @@ const AddRecipeModal = ({addRecipe}) => {
                     recipe={recipe}
                     updateRecipeField={updateRecipeField}
                 />
-                <IngredientForm addIngredient={addIngredient}/>
-                <IngredientList ingredients={recipe.ingredients || []} removeIngredient={removeIngredient}/>
-
+                <IngredientList
+                    ingredients={recipe.ingredients || []}
+                    addIngredient={addIngredient}
+                    removeIngredient={removeIngredient}
+                />
                 <Button onClick={handleSaveRecipe} disabled={validRecipe}>Save</Button>
             </Modal>
         </div>

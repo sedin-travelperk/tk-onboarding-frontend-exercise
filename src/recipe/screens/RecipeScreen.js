@@ -40,12 +40,17 @@ const RecipeScreen = () => {
 
     return (
         <>
+            <h1>Recipe</h1>
             <RecipeForm
                 recipe={recipe}
                 updateRecipeField={updateRecipeField}
             />
-            <IngredientForm addIngredient={addIngredient}/>
-            <IngredientList ingredients={recipe.ingredients || []} removeIngredient={removeIngredient}/>
+
+            <IngredientList
+                ingredients={recipe.ingredients || []}
+                addIngredient={addIngredient}
+                removeIngredient={removeIngredient}
+            />
             <Button onClick={handleSaveRecipe} disabled={validRecipe}>Save</Button>
             <Button onClick={handleDeleteRecipe}>Delete</Button>
         </>

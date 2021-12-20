@@ -11,13 +11,17 @@ const RecipeListItem = ({recipe, removeRecipe}) => {
     }
 
     return (
-        <>
-            <p>{recipe.id}</p>
-            <p>{recipe.name}</p>
-            <p>{recipe.description}</p>
-            <Button onClick={() => openRecipeDetails()}>Edit</Button>
-            <Button onClick={() => removeRecipe(recipe.id)}>Delete</Button>
-        </>
+            <tr key={recipe.id}>
+                <td>{recipe.id}</td>
+                <td>{recipe.name}</td>
+                <td>{recipe.description}</td>
+                <td>
+                    <Button onClick={() => openRecipeDetails()}>Edit</Button>
+                    <Button onClick={() => removeRecipe(recipe.id)}>Delete</Button>
+                </td>
+            </tr>
+
+
     )
 }
 

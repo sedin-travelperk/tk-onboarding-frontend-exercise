@@ -1,24 +1,30 @@
 import React from "react";
-import Divider from "../../app/components/Divider";
 import IngredientListItem from "./IngredientListItem";
+import Table from "../../app/components/Table";
+import IngredientForm from "./IngredientForm";
 
-const IngredientList = ({ingredients, removeIngredient}) => {
+
+const IngredientList = ({ingredients,addIngredient, removeIngredient}) => {
     return (
         <>
-            <h1>Ingredient List</h1>
-            <Divider />
-            {
-                ingredients.map(ingredient => (
-                        <div>
-                            <IngredientListItem
-                                ingredient={ingredient}
-                                removeIngredient={removeIngredient}
-                            />
-                            <Divider />
-                        </div>
+            <h4>Ingredient List</h4>
+            <IngredientForm addIngredient={addIngredient}/>
+            <Table>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+                {
+                    ingredients.map(ingredient => (
+                                <IngredientListItem
+                                    ingredient={ingredient}
+                                    removeIngredient={removeIngredient}
+                                />
+                        )
                     )
-                )
-            }
+                }
+            </Table>
+
         </>
     )
 }

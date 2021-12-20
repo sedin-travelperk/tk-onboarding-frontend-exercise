@@ -24,15 +24,22 @@ const SearchRecipes = ({updateRecipeList}) => {
 
         updateRecipeList(result);
     }
+
+    const handleClearSearch = async () => {
+        const result = await recipeService.findAllRecipes();
+        setName("");
+        updateRecipeList(result);
+    }
     return (
-        <>
+        <div>
             <Input
                 label={"Enter recipe name: "}
                 value={name}
                 onChange={handleChange}
             />
             <Button onClick={handleSearchRecipes} disabled={validName}>Search</Button>
-        </>
+            <Button onClick={handleClearSearch} disabled={validName}>Clear</Button>
+        </div>
 
     )
 }

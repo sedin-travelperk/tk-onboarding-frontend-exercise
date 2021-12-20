@@ -5,10 +5,12 @@ import {useNavigate} from "react-router";
 const IngredientListItem = ({ingredient, removeIngredient}) => {
 
     return (
-        <>
-            <p>{ingredient.name}</p>
-            <Button onClick={() => removeIngredient(ingredient.name)}>Remove</Button>
-        </>
+        <tr>
+            <td>{ingredient.name}</td>
+            <td>
+                <Button onClick={() => removeIngredient(ingredient.name)}>Remove</Button>
+            </td>
+        </tr>
     )
 }
 
